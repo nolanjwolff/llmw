@@ -64,15 +64,15 @@ footer{text-align:center;color:var(--soft);font-size:14px;padding:50px 0 60px;bo
 
   <header class="hero">
     <div class="portrait" id="portrait"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.5 4-6 8-6s7 1.5 8 6"/></svg></div>
-    <h1 class="serif" id="name">Brother’s Name</h1>
-    <div class="dates" id="dates">1990 &nbsp;·&nbsp; 2026</div>
+    <h1 class="serif" id="name">Micah Wolff</h1>
+    <div class="dates" id="dates">2011 &nbsp;·&nbsp; 2026</div>
     <p class="quote serif" id="tagline">“Forever loved, forever missed.”</p>
   </header>
 
   <section class="about" id="about">
     <h2 class="serif">His Story</h2>
     <p class="sub"></p>
-    <p id="story">Write a few warm words here about who he was: what made him laugh, what he loved, and how he made everyone around him feel.</p>
+    <p id="story">Filler</p>
   </section>
 
   <section id="photos">
@@ -93,10 +93,16 @@ footer{text-align:center;color:var(--soft);font-size:14px;padding:50px 0 60px;bo
     <form id="f" onsubmit="return false">
       <label>Your name<input id="n" autocomplete="name" placeholder="How you knew him"></label>
       <label>Your message<textarea id="m" placeholder="A memory, a story, a few kind words…"></textarea></label>
-      <p class="note">Got a photo? Attach it to the email that opens when you press send.</p>
+      <p class="note">Got a photo? Attach it to the email once it opens.</p>
       <div class="row">
-        <a class="btn" id="send" href="#" target="_blank" rel="noopener">Send for review</a>
-        <button class="btn ghost" type="button" id="copy">Copy message instead</button>
+        <a class="btn" id="send" href="#">Send by email</a>
+      </div>
+      <p class="note">Or send it with:</p>
+      <div class="row">
+        <a class="btn ghost" id="gmail" href="#" target="_blank" rel="noopener">Gmail</a>
+        <a class="btn ghost" id="outlook" href="#" target="_blank" rel="noopener">Outlook</a>
+        <a class="btn ghost" id="yahoo" href="#" target="_blank" rel="noopener">Yahoo</a>
+        <button class="btn ghost" type="button" id="copy">Copy message</button>
       </div>
       <p class="note" id="status" aria-live="polite"></p>
     </form>
@@ -109,7 +115,7 @@ footer{text-align:center;color:var(--soft);font-size:14px;padding:50px 0 60px;bo
 // ---- Edit these ----
 var CONFIG = {
   name: "Micah Wolff",
-  dates: "2014 · 2026",
+  dates: "2011 · 2026",
   tagline: "“Forever loved, forever missed.”",
   email: "njwolff329@icloud.com"
 };
@@ -142,13 +148,20 @@ else MESSAGES.forEach(function (m) {
   d.appendChild(p); d.appendChild(b); ml.appendChild(d);
 });
 
-var n = document.getElementById('n'), m = document.getElementById('m'), a = document.getElementById('send'), st = document.getElementById('status');
+var n = document.getElementById('n'), m = document.getElementById('m'), st = document.getElementById('status');
 function body() { return 'From: ' + (n.value || '(name)') + '\n\n' + m.value; }
+function subj() { return 'Memorial submission from ' + (n.value || 'a visitor'); }
 function upd() {
-  a.href = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent('Memorial submission from ' + (n.value || 'a visitor')) + '&body=' + encodeURIComponent(body());
+  var e = encodeURIComponent, s = e(subj()), b = e(body()), to = e(CONFIG.email);
+  document.getElementById('send').href = 'mailto:' + CONFIG.email + '?subject=' + s + '&body=' + b;
+  document.getElementById('gmail').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + to + '&su=' + s + '&body=' + b;
+  document.getElementById('outlook').href = 'https://outlook.live.com/mail/0/deeplink/compose?to=' + to + '&subject=' + s + '&body=' + b;
+  document.getElementById('yahoo').href = 'https://compose.mail.yahoo.com/?to=' + to + '&subject=' + s + '&body=' + b;
 }
 n.addEventListener('input', upd); m.addEventListener('input', upd); upd();
-a.addEventListener('click', function () { st.textContent = 'Thank you. Your email app should open with your message ready to send.'; });
+document.getElementById('send').addEventListener('click', function () {
+  st.textContent = 'If your email app didn’t open, please use Gmail, Outlook or Yahoo above, or copy your message.';
+});
 document.getElementById('copy').addEventListener('click', function () {
   try { navigator.clipboard.writeText(body()).then(function () { st.textContent = 'Copied. You can paste it into an email to ' + CONFIG.email + '.'; }, function () { st.textContent = 'Please copy the text manually and email it to ' + CONFIG.email + '.'; }); }
   catch (e) { st.textContent = 'Please copy the text manually and email it to ' + CONFIG.email + '.'; }
