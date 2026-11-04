@@ -65,7 +65,6 @@ footer{text-align:center;color:var(--soft);font-size:14px;padding:50px 0 60px;bo
   <header class="hero">
     <div class="portrait" id="portrait"><img src="Photos/portrait.jpg" alt="His name"></div>    <h1 class="serif" id="name">Micah Wolff</h1>
     <div class="dates" id="dates">2011 &nbsp;·&nbsp; 2026</div>
-    <p class="quote serif" id="tagline">“Forever loved, forever missed.”</p>
   </header>
 
   <section class="about" id="about">
@@ -92,7 +91,7 @@ footer{text-align:center;color:var(--soft);font-size:14px;padding:50px 0 60px;bo
     <form id="f" onsubmit="return false">
       <label>Your name<input id="n" autocomplete="name" placeholder="How you knew him"></label>
       <label>Your message<textarea id="m" placeholder="A memory, a story, a few kind words…"></textarea></label>
-      <p class="note">Got a photo? Attach it to the email once it opens.</p>
+      <p class="note">If you have a photo, attach it to the email once it opens.</p>
       <div class="row">
         <a class="btn" id="send" href="#">Send by email</a>
       </div>
@@ -117,7 +116,6 @@ var CONFIG = {
 };
 // Approved content: {name, text} for messages, {src, caption} for photos
 var MESSAGES = [
-{name: "Nolan",text:"Test"}
 ];
 var PHOTOS = [
 {src: "Photos/portrait.jpg", caption: "His Portrait"}
