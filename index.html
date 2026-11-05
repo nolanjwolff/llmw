@@ -65,7 +65,7 @@ footer{text-align:center;color:var(--soft);font-size:14px;padding:50px 0 60px;bo
   <header class="hero">
     <div class="portrait" id="portrait"><img src="Photos/portrait.jpg" alt="His name"></div>    <h1 class="serif" id="name">Micah Wolff</h1>
     <div class="dates" id="dates">2011 &nbsp;·&nbsp; 2026</div>
-    <div class="btn" id="donate" href="#" target="_blank" rel="noopener">Donate</div>
+    <a class="btn" id="donate" href="https://example.com/donate" target="_blank" rel="noopener">Donate</a>
   </header>
 
   <section class="about" id="about">
@@ -162,9 +162,6 @@ document.getElementById('send').addEventListener('click', function () {
 document.getElementById('copy').addEventListener('click', function () {
   try { navigator.clipboard.writeText(body()).then(function () { st.textContent = 'Copied. You can paste it into an email to ' + CONFIG.email + '.'; }, function () { st.textContent = 'Please copy the text manually and email it to ' + CONFIG.email + '.'; }); }
   catch (e) { st.textContent = 'Please copy the text manually and email it to ' + CONFIG.email + '.'; }
-});
-document.getElementById('donate').addEventListener('click', function(){
-  <a href="https://www.mealtrain.com/trains/vm2948" target="_blank" rel="noopener noreferrer">Donate</a>
 });
 </script>
 </body>
