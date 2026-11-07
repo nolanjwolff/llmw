@@ -57,16 +57,25 @@ textarea{min-height:150px;resize:vertical}
 footer{text-align:center;color:var(--soft);font-size:14px;padding:50px 0 60px;border-top:1px solid var(--line)}
 @media(max-width:560px){body{font-size:16px}.quote{font-size:21px}h2{font-size:32px}nav{gap:18px;font-size:12px}}
 </style>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="In Loving Memory of Micah Wolff">
+<meta property="og:description" content="Photos, memories, and messages celebrating Micah's life.">
+<meta property="og:image" content="https://micahwolff.com/Photos/portrait.jpg">
+<meta property="og:url" content="https://micahwolff.com/">
+<meta name="twitter:card" content="summary_large_image">
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-523WDWHN');</script>
 </head>
-
-<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-523WDWHN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-</script>
-
 <body>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-523WDWHN"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
 <div class="wrap">
   
   <nav><a href="#photos">Photos</a><a href="#memories">Memories</a><a href="#share">Share</a></nav>
@@ -97,7 +106,7 @@ footer{text-align:center;color:var(--soft);font-size:14px;padding:50px 0 60px;bo
     <h2 class="serif">Share a Memory</h2>
     <p class="sub">Your words and photos mean so much. Each one is read personally before it appears here.</p>
     <form id="f" onsubmit="return false">
-      <label>Your name<input id="n" autocomplete="Information" placeholder="Name & How you knew Micah"></label>
+      <label>Your name<input id="n" autocomplete="name" placeholder="Name & How you knew Micah"></label>
       <label>Your message<textarea id="m" placeholder="A memory, a story, or a few kind words…"></textarea></label>
       <p class="note">If you have a photo, attach it to the email once it opens.</p>
       <div class="row">
@@ -118,13 +127,14 @@ footer{text-align:center;color:var(--soft);font-size:14px;padding:50px 0 60px;bo
 <script>
 
 document.getElementById('donate').addEventListener('click', function () {
-  gtag('event', 'donate_button', {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'donate_button',
     link_url: this.href,
     link_text: this.textContent.trim(),
     button_id: this.id
   });
 });
-
 
 var CONFIG = {
   name: "Micah Wolff",
